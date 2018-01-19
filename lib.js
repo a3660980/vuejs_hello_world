@@ -66,3 +66,34 @@ new Vue({
       ]
     }
   })
+
+  Vue.component('todo-item', {
+    template:`
+    <li>
+      {{ title }}
+      <button v-on:click="$emit('remove')">X</button>
+    </li>
+  `,
+    props:['title']
+  })
+
+  var todolist = new Vue({
+    el: '#to-do-list',
+    data: {
+      newTodoText: '',
+      todos: [
+        { id: 0, title: '蔬菜' },
+        { id: 1, title: '奶酪' },
+        { id: 2, title: 'sss' }
+      ],
+      nextTodoId :3
+    },
+    methods: {
+      addNewTodo : function () {
+        todolist.todos.push({
+          id:this.nextTodoId++ ,
+          title:this.newTodoText})
+        this.newTodoText= '';
+      }
+    }
+  })
