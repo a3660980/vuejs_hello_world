@@ -92,7 +92,8 @@ new Vue({
       addNewTodo : function () {
         todolist.todos.push({
           id:this.nextTodoId++ ,
-          title:this.newTodoText})
+          title:this.newTodoText
+        });
         this.newTodoText= '';
       }
     }
